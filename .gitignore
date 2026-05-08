@@ -1,0 +1,16 @@
+node_modules/
+dist/
+
+.env
+.env.local
+.env.*.local
+
+*.log
+server-run.err.log
+server-run.log
+server/generated/
+
+miniprogram/project.private.config.json
+
+.DS_Store
+Thumbs.db

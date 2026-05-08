@@ -1,0 +1,225 @@
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+}
+
+.workspace,
+.coach-panel {
+  background: #ffffff;
+  border: 1rpx solid #dbe3ec;
+  border-radius: 12rpx;
+  box-shadow: 0 10rpx 30rpx rgba(15, 23, 42, 0.06);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 28rpx;
+  border-bottom: 1rpx solid #e6edf5;
+}
+
+.eyebrow,
+.muted {
+  display: block;
+  color: #64748b;
+  font-size: 22rpx;
+}
+
+.title {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12rpx;
+  max-width: 390rpx;
+}
+
+.primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.chart-frame {
+  padding: 20rpx;
+}
+
+.reference-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin-bottom: 14rpx;
+}
+
+.reference-label {
+  display: block;
+  max-width: 430rpx;
+  overflow: hidden;
+  color: #172033;
+  font-size: 28rpx;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reference-meta,
+.audio-status,
+.reference-tip {
+  display: block;
+  color: #64748b;
+  font-size: 22rpx;
+}
+
+.audio-status {
+  max-width: 460rpx;
+  margin-top: 4rpx;
+  white-space: normal;
+}
+
+.reference-tip {
+  flex-shrink: 0;
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: 660rpx;
+  border: 1rpx solid #dbe3ec;
+  border-radius: 12rpx;
+  background: #f8fafc;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14rpx;
+  padding: 0 20rpx 20rpx;
+}
+
+.metric {
+  border: 1rpx solid #dbe3ec;
+  border-radius: 10rpx;
+  padding: 18rpx;
+}
+
+.metric text:first-child {
+  display: block;
+  color: #64748b;
+  font-size: 22rpx;
+}
+
+.value {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.mic-panel {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  margin: 0 20rpx 20rpx;
+  padding: 18rpx;
+  border: 1rpx solid #dbe3ec;
+  border-radius: 10rpx;
+}
+
+.mic-panel > view:first-child {
+  width: 260rpx;
+}
+
+.pitch-info {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.level-meter {
+  flex: 1;
+  height: 18rpx;
+  overflow: hidden;
+  border-radius: 999rpx;
+  background: #e2e8f0;
+}
+
+.level-bar {
+  height: 100%;
+  min-width: 4rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(90deg, #14b8a6, #22c55e, #f59e0b);
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+  padding: 20rpx 28rpx;
+  border-top: 1rpx solid #e6edf5;
+  color: #475569;
+  font-size: 24rpx;
+}
+
+.status-row text {
+  flex: 1;
+}
+
+.coach-panel {
+  margin-top: 24rpx;
+  padding: 28rpx;
+}
+
+.panel-title,
+.section-title {
+  display: block;
+  font-weight: 700;
+}
+
+.panel-title {
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+}
+
+.score-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 170rpx;
+  height: 170rpx;
+  margin-bottom: 24rpx;
+  border: 12rpx solid #2563eb;
+  border-radius: 999rpx;
+}
+
+.score {
+  font-size: 46rpx;
+  font-weight: 800;
+}
+
+.summary,
+.empty,
+.list-item {
+  display: block;
+  color: #475569;
+  font-size: 26rpx;
+  line-height: 1.7;
+}
+
+.section {
+  margin-top: 24rpx;
+}
+
+.section-title {
+  margin-bottom: 10rpx;
+  font-size: 26rpx;
+}

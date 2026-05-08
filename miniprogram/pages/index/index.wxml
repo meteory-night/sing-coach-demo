@@ -1,0 +1,116 @@
+<view class="page">
+  <view class="workspace">
+    <view class="topbar">
+      <view>
+        <text class="eyebrow">Singing Pitch Coach</text>
+        <text class="title">音准教练</text>
+      </view>
+      <view class="actions">
+        <button size="mini" bindtap="chooseMidi" disabled="{{isRecording}}">上传 MIDI</button>
+        <button size="mini" bindtap="resetDemo" disabled="{{isRecording}}">示例旋律</button>
+        <button size="mini" class="primary" bindtap="startSession" disabled="{{isRecording}}">开始录唱</button>
+        <button size="mini" bindtap="stopSession" disabled="{{!isRecording}}">停止</button>
+      </view>
+    </view>
+
+    <view class="chart-frame">
+      <view class="reference-strip">
+        <view>
+          <text class="reference-label">{{referenceLabel}}</text>
+          <text class="reference-meta">{{referenceMeta}}</text>
+          <text class="audio-status">{{audioStatus}}</text>
+        </view>
+        <text class="reference-tip">绿色参考 · 红色人声</text>
+      </view>
+      <canvas type="2d" id="pitchChart" class="chart"></canvas>
+    </view>
+
+    <view class="stats-grid">
+      <view class="metric">
+        <text>总分</text>
+        <text class="value">{{stats.overallScoreText}}</text>
+      </view>
+      <view class="metric">
+        <text>平均误差</text>
+        <text class="value">{{stats.averageAbsCentsText}}</text>
+      </view>
+      <view class="metric">
+        <text>偏高比例</text>
+        <text class="value">{{stats.sharpPercent}}%</text>
+      </view>
+      <view class="metric">
+        <text>偏低比例</text>
+        <text class="value">{{stats.flatPercent}}%</text>
+      </view>
+      <view class="metric">
+        <text>稳定度</text>
+        <text class="value">{{stats.stabilityScoreText}}</text>
+      </view>
+      <view class="metric">
+        <text>有效帧</text>
+        <text class="value">{{stats.validFrameCount}}</text>
+      </view>
+    </view>
+
+    <view class="mic-panel">
+      <view>
+        <text class="muted">麦克风电平</text>
+        <text class="pitch-info">{{lastPitchInfo}}</text>
+      </view>
+      <view class="level-meter">
+        <view class="level-bar" style="width: {{inputLevelPercent}}%;"></view>
+      </view>
+    </view>
+
+    <view class="status-row">
+      <text>{{status}}</text>
+      <button size="mini" class="primary" bindtap="evaluateWithAi" disabled="{{!canEvaluate || isRecording}}">
+        生成 AI 反馈
+      </button>
+    </view>
+  </view>
+
+  <view class="coach-panel">
+    <text class="panel-title">AI 教练反馈</text>
+    <block wx:if="{{feedback}}">
+      <view class="score-ring">
+        <text class="score">{{feedback.overallScore}}</text>
+        <text>综合分</text>
+      </view>
+      <text class="summary">{{feedback.summary}}</text>
+
+      <view class="section">
+        <text class="section-title">主要问题</text>
+        <block wx:for="{{feedback.mainIssues}}" wx:key="*this">
+          <text class="list-item">• {{item}}</text>
+        </block>
+      </view>
+
+      <view class="section">
+        <text class="section-title">时间段反馈</text>
+        <block wx:for="{{feedback.segmentFeedback}}" wx:key="*this">
+          <text class="list-item">• {{item}}</text>
+        </block>
+      </view>
+
+      <view class="section">
+        <text class="section-title">练习建议</text>
+        <block wx:for="{{feedback.practiceSuggestions}}" wx:key="*this">
+          <text class="list-item">• {{item}}</text>
+        </block>
+      </view>
+    </block>
+    <block wx:else>
+      <text class="summary">录唱结束后生成反馈。小程序版本同样只发送音准特征，不上传原始录音。</text>
+      <view class="section">
+        <text class="section-title">检测到的问题段</text>
+        <block wx:if="{{problemSegments.length}}">
+          <block wx:for="{{problemSegmentsView}}" wx:key="key">
+            <text class="list-item">• {{item.text}}</text>
+          </block>
+        </block>
+        <text wx:else class="empty">暂无明显问题段。</text>
+      </view>
+    </block>
+  </view>
+</view>
